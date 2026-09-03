@@ -1,26 +1,42 @@
-
 # VIC Hostel Enterprise Network
 
 ## Problem Statement
 
-Design and simulate a reliable, secure, and scalable network infrastructure for a multi-floor hostel. The network should provide proper department-wise segmentation, inter-network communication, automatic IP address assignment, dynamic routing, secure remote administration, and protection against unauthorized device access.
+Design and simulate a reliable, secure, and scalable network infrastructure for a multi-floor hostel. The network should provide department-wise segmentation, communication between different networks, automatic IP address assignment, dynamic routing, secure remote administration, and protection against unauthorized device access.
 
 ## Project Overview
 
-VIC Hostel Enterprise Network is an enterprise network simulation developed using Cisco Packet Tracer. The network is designed across multiple floors with separate VLANs for different departments.
+VIC Hostel Enterprise Network is an enterprise network simulation developed using Cisco Packet Tracer.
 
-The project demonstrates practical implementation of VLAN segmentation, 802.1Q trunking, inter-VLAN routing, DHCP, OSPF, SSH, and switch port security.
+The network is designed across three floors with separate VLANs for different departments. Each floor contains a router and switch, while the routers are interconnected using serial links in a triangular topology.
 
-## Objectives
+The project demonstrates practical implementation of VLAN segmentation, 802.1Q trunking, Router-on-a-Stick inter-VLAN routing, DHCP, OSPF, SSH, and switch port security.
 
-- Design a multi-floor hostel network infrastructure.
-- Separate departments using VLANs.
-- Enable communication between different VLANs using inter-VLAN routing.
-- Automate IP address assignment using DHCP.
-- Implement dynamic routing using OSPF.
-- Enable secure remote administration using SSH.
-- Protect switch ports against unauthorized devices.
-- Test and verify end-to-end network connectivity.
+## Network Architecture
+
+The network consists of:
+
+- **3 Routers** — one router for each floor
+- **3 Switches** — one switch for each floor
+- **8 Departments**
+- **8 VLANs**
+- **3 Router-to-Router serial links**
+- Department-specific end devices
+- Router-on-a-Stick inter-VLAN routing
+- OSPF dynamic routing between routers
+
+### Departments, VLANs and IP Addressing
+
+| Floor | Department | VLAN | Network | Default Gateway |
+|---|---|---:|---|---|
+| Floor 1 | Reception | 80 | 192.168.8.0/24 | 192.168.8.1 |
+| Floor 1 | Store | 70 | 192.168.7.0/24 | 192.168.7.1 |
+| Floor 1 | Logistics | 60 | 192.168.6.0/24 | 192.168.6.1 |
+| Floor 2 | Sales | 30 | 192.168.3.0/24 | 192.168.3.1 |
+| Floor 2 | HR | 40 | 192.168.4.0/24 | 192.168.4.1 |
+| Floor 2 | Finance | 50 | 192.168.5.0/24 | 192.168.5.1 |
+| Floor 3 | IT | 10 | 192.168.1.0/24 | 192.168.1.1 |
+| Floor 3 | Admin | 20 | 192.168.2.0/24 | 192.168.2.1 |
 
 ## Technologies Used
 
@@ -35,52 +51,52 @@ The project demonstrates practical implementation of VLAN segmentation, 802.1Q t
 - SSH
 - Port Security
 
-## Network Architecture
-
-The network consists of multiple floors, routers, and switches. Each department is assigned a separate VLAN and IP subnet.
-
-The routers are interconnected using serial links and OSPF is used for dynamic routing between networks.
-
 ## Key Features
 
 ### VLAN Segmentation
-Different departments are separated into dedicated VLANs to improve network organization and security.
+
+Each department is assigned a separate VLAN to logically segment the network and improve network organization.
 
 ### Inter-VLAN Routing
-Router-on-a-Stick is implemented to allow communication between different VLANs.
+
+Router-on-a-Stick is implemented using 802.1Q subinterfaces to enable communication between different VLANs.
 
 ### DHCP
-Routers provide automatic IP address configuration to end devices.
 
-### OSPF
-OSPF is configured to dynamically exchange routing information between the routers.
+DHCP is configured to automatically assign IP addresses, default gateways, and DNS information to end devices.
 
-### SSH
-SSH provides secure remote access to network devices for administration.
+### OSPF Dynamic Routing
+
+OSPF is configured between the three routers to dynamically exchange routing information and provide connectivity between different floor networks.
+
+### SSH Remote Administration
+
+SSH is configured for secure remote administration of network devices. SSH provides encrypted communication compared with unencrypted Telnet access.
 
 ### Port Security
-Switch port security is used to restrict unauthorized devices from accessing protected switch ports.
 
-## Testing and Verification
+Switch port security is implemented on the required access port to restrict unauthorized devices. Sticky MAC learning is used to allow the authorized Test-PC.
 
-The network was verified using:
+## Network Connectivity Testing
 
-- VLAN verification
-- Trunk verification
-- Interface status verification
-- DHCP verification
-- OSPF neighbor verification
-- Routing table verification
-- Inter-VLAN connectivity testing
-- SSH remote access testing
-- Port security verification
+The network was tested using Cisco Packet Tracer end devices and router/switch verification commands.
 
-## Project File
+### Local Network Testing
 
-The Cisco Packet Tracer simulation file is included in this repository:
+For each department, connectivity can be verified by checking:
 
-`VIC-Hostel-Enterprise-Network.pkt`
+- DHCP-assigned IP address
+- Default gateway connectivity
+- Communication with devices in the same VLAN
 
-## Author
+### Inter-VLAN Testing
 
-**Vishal**
+Connectivity was tested between devices belonging to different VLANs, including networks across different floors.
+
+Example:
+
+```text
+IT → Admin       ✅
+IT → Sales       ✅
+IT → Finance     ✅
+IT → Reception   ✅
