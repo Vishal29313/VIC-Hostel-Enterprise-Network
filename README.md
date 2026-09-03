@@ -100,3 +100,35 @@ IT → Admin       ✅
 IT → Sales       ✅
 IT → Finance     ✅
 IT → Reception   ✅
+
+## Network Topology
+
+### Complete Network
+
+The complete network consists of three floor-wise networks connected through three routers. The routers are interconnected using serial links to provide communication between different floor networks.
+
+![Complete Network Topology](screenshots/complete-network-topology.png)
+
+### Floor 1
+
+Floor 1 contains the Reception, Store, and Logistics departments.
+
+![Floor 1 Topology](screenshots/floor-1-topology.png)
+
+### Floor 2
+
+Floor 2 contains the Sales, HR, and Finance departments.
+
+![Floor 2 Topology](screenshots/floor-2-topology.png)
+
+### Floor 3
+
+Floor 3 contains the IT and Admin departments. The IT network also contains the Test-PC used for SSH and security testing.
+
+![Floor 3 Topology](screenshots/floor-3-topology.png)
+
+### Router Interconnection
+
+The three routers are interconnected using serial links in a triangular topology. This design provides multiple paths between routers and allows OSPF to dynamically determine available routes.
+
+![Three Router Topology](screenshots/3-router-topology.png)
