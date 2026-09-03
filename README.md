@@ -132,3 +132,33 @@ Floor 3 contains the IT and Admin departments. The IT network also contains the 
 The three routers are interconnected using serial links in a triangular topology. This design provides multiple paths between routers and allows OSPF to dynamically determine available routes.
 
 ![Three Router Topology](screenshots/3-router-topology.png)
+
+
+
+## Verification
+
+The network was tested using Cisco Packet Tracer to verify VLAN configuration, DHCP, OSPF routing, secure remote access, and end-to-end connectivity.
+
+### VLAN Verification
+
+![VLAN Verification](verification/F1-vlan-verification.png)
+
+### DHCP Verification
+
+![DHCP Verification](verification/f1-dhcp-verification.png)
+
+### OSPF Neighbor Verification
+
+![OSPF Neighbor Verification](verification/ospf-verification.png)
+
+### Routing Verification
+
+![Routing Verification](verification/routing-verification.png)
+
+### SSH Verification
+
+![SSH Verification](verification/ssh-verification.png)
+
+### Connectivity Test
+
+![Connectivity Test](verification/Connectivity_test.png)
